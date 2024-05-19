@@ -1,0 +1,76 @@
+.moviecard {
+  width: 482px;
+  height: 218px;
+  padding: 24px;
+  display: flex;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.moviecardMain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.moviecardInfo {
+  margin-left: 16px;
+}
+
+.moviecardInfoHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.moviecardInfoHeader h1 {
+  max-width: 240px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24.2px;
+  color: rgba(152, 84, 246, 1);
+}
+
+.star {
+  max-height: 28px;
+}
+
+.moviecardInfoYear {
+  margin: 8px 0;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(123, 124, 136, 1);
+}
+
+.moviecardInfoRaiting {
+  display: flex;
+}
+
+.moviecardInfoRaiting h1 {
+  margin: auto 8px auto 4px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.moviecardInfoRaiting p {
+  margin: auto 0;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(123, 124, 136, 1);
+}
+
+.moviecardGanres {
+  margin-left: 16px;
+  display: flex;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.moviecardGanres p {
+  margin-right: 12px;
+  color: rgba(123, 124, 136, 1);
+}
+
+
+.moviecardGanres h1 {
+  color: rgba(0, 0, 0, 1);
+}

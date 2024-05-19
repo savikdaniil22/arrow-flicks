@@ -1,3 +1,24 @@
 .movie {
-  background-color: green;
+  margin: 40px 180px;
+}
+
+.router {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.router p {
+  font-size: 15px;
+  font-weight: 400;
+  margin: auto 10px;
+}
+
+.router a {
+  color: rgba(152, 84, 246, 1);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.router a:hover {
+  cursor: pointer;
 }
