@@ -7,3 +7,9 @@
 .movies h1 {
   padding: 0;
 }
+
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}

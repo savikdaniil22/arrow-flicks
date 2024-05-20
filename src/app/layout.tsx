@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import styles from "./layout.module.scss";
-import Head from "next/head";
-import SideBar from "./ui/side-bar/Side-bar";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import styles from './layout.module.scss';
+import Head from 'next/head';
+import SideBar from './ui/side-bar/SideBar';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "ArrowFlicks",
-  description: "ArrowFlicks",
+  title: 'ArrowFlicks',
+  description: 'ArrowFlicks',
 };
 
 export default function RootLayout({

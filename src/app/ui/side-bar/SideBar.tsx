@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import styles from './Side-bar.module.scss';
+import styles from './SideBar.module.scss';
 
 export default function SideBar() {
   const router = useRouter();
