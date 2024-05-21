@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './MovieCard.module.scss';
 import { IMovieCardProps } from '@/models/Movie';
 import Link from 'next/link';
+import RatedStar from '../rated-star/RatedStar';
 
 function roundToNearestTen(num: number): number {
   return Math.round(num * 10) / 10;
@@ -25,7 +26,11 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie, genres }) => {
   return (
     <div className={styles.moviecard}>
       <Image
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        src={
+          movie.poster_path
+            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+            : '/noposter.svg'
+        }
         alt="poster"
         width={119}
         height={170}
@@ -36,13 +41,7 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie, genres }) => {
             <Link className={styles.moviecardInfoHeaderTitle} href={`movie/${movie.id}`}>
               {movie.original_title}
             </Link>
-            <Image
-              className={styles.star}
-              src="/ratedstar.svg"
-              alt="ratedstar"
-              width={28}
-              height={28}
-            />
+            <RatedStar movie={movie}></RatedStar>
           </div>
           <p className={styles.moviecardInfoYear}>{releaseYear}</p>
           <div className={styles.moviecardInfoRaiting}>

@@ -1,5 +1,4 @@
-import Movie from "./Movie";
-
+import Movie from './Movie';
 export default function Page() {
   return <Movie></Movie>;
 }

@@ -55,5 +55,10 @@ export interface IMovieCardProps {
 }
 
 export interface IMovieCardBigProps {
-  movie: IMovie;
+  movie?: IMovie;
+  trailerKey?: string;
+}
+
+export interface IRatedStarProps {
+  movie: IMovieShort;
 }

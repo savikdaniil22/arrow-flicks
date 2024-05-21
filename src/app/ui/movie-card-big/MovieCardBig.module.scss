@@ -80,7 +80,6 @@
   color: rgba(123, 124, 136, 1);
 }
 
-
 .moviecardAllInfo h1 {
   color: rgba(0, 0, 0, 1);
 }
@@ -98,9 +97,9 @@
   margin-bottom: 16px;
 }
 
-.secondInformation hr {
+.line {
+  display: flex;
   margin: 16px 0;
-  border: 0;
   width: 100%;
   height: 1px;
   background-color: rgba(213, 214, 220, 1);
@@ -118,16 +117,15 @@
   font-size: 16px;
 }
 
-.productioFirst {
+.productionCompany {
   display: flex;
-  margin: 16px 0;
+  height: 40px;
 }
 
-.productionSecont {
-  display: flex;
-  margin-bottom: 16px;
+.productionCompany:not(:last-child) {
+  margin-bottom: 12px;
 }
 
-.productionThird {
-  display: flex;
+.productionCompanyImage {
+  margin: auto 0;
 }
