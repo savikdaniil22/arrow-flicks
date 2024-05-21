@@ -52,6 +52,7 @@ export interface IGenre {
 export interface IMovieCardProps {
   movie: IMovieShort;
   genres: IGenre[];
+  updateMovies?: () => void;
 }
 
 export interface IMovieCardBigProps {
@@ -61,4 +62,5 @@ export interface IMovieCardBigProps {
 
 export interface IRatedStarProps {
   movie: IMovieShort;
+  updateMovies?: () => void;
 }

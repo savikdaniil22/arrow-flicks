@@ -16,7 +16,7 @@ function formatNumber(num: number): string {
       : `${num}`;
 }
 
-const MovieCard: React.FC<IMovieCardProps> = ({ movie, genres }) => {
+const MovieCard: React.FC<IMovieCardProps> = ({ movie, genres, updateMovies }) => {
   const genreNames = movie.genre_ids
     .map((genreId) => genres.find((genre) => genre.id === genreId)?.name)
     .filter(Boolean);
@@ -41,7 +41,7 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie, genres }) => {
             <Link className={styles.moviecardInfoHeaderTitle} href={`movie/${movie.id}`}>
               {movie.original_title}
             </Link>
-            <RatedStar movie={movie}></RatedStar>
+            <RatedStar movie={movie} updateMovies={updateMovies}></RatedStar>
           </div>
           <p className={styles.moviecardInfoYear}>{releaseYear}</p>
           <div className={styles.moviecardInfoRaiting}>
