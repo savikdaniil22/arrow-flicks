@@ -1,0 +1,41 @@
+.notFound {
+  height: 900px;
+  max-width: 1160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notFounddItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.notFounddItem p {
+  margin: 16px 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.notFounddItem a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  width: 122px;
+  height: 40px;
+  background: rgba(152, 84, 246, 1);
+  border-radius: 8px;
+  border: 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.notFounddItem a:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}

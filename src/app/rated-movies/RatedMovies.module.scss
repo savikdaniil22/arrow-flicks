@@ -1,3 +1,120 @@
+.ratedMoviesPage {
+  height: 900px;
+}
+
 .ratedMovies {
-  background-color: gray;
+  margin-left: 90px;
+  width: 980px;
+}
+
+.ratedMoviesHeaders {
+  margin: 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ratedMoviesHeaders h1 {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.ratedMoviesSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px;
+  width: 490px;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.ratedMoviesSearch input {
+  border: 0;
+  width: 100%;
+}
+
+.ratedMoviesSearch input[type='text'] {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ratedMoviesSearch input[type='text']:focus {
+  outline: none;
+}
+
+.ratedMoviesSearchText {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.ratedMoviesSearch button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 20px;
+  width: 88px;
+  height: 32px;
+  background: rgba(152, 84, 246, 1);
+  border-radius: 8px;
+  border: 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.ratedMoviesSearch button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.noRatedPage {
+  height: 900px;
+  max-width: 1160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.noRatedItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.noRatedItem p {
+  margin: 16px 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.noRatedItem a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  width: 122px;
+  height: 40px;
+  background: rgba(152, 84, 246, 1);
+  border-radius: 8px;
+  border: 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.noRatedItem a:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
