@@ -8,9 +8,9 @@
 }
 
 .ratedMoviesHeaders {
-  margin: 40px 0;
   display: flex;
   justify-content: space-between;
+  margin: 40px 0;
 }
 
 .ratedMoviesHeaders h1 {
@@ -72,11 +72,11 @@
 }
 
 .noRatedPage {
-  height: 900px;
-  max-width: 1160px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 900px;
+  max-width: 1160px;
 }
 
 .movieList {
@@ -117,4 +117,9 @@
 .noRatedItem a:hover {
   opacity: 0.7;
   cursor: pointer;
+}
+
+.movieList p {
+  font-weight: 400;
+  font-size: 16px;
 }

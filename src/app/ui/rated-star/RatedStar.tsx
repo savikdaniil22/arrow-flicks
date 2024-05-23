@@ -6,19 +6,22 @@ import Image from 'next/image';
 const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
   const [ratedMovies, setRatedMovies] = useState<IMovieShort[]>([]);
 
+  const getLocalStoreItems = () =>
+    JSON.parse(localStorage.getItem('ratedMovies') || '[]') as IMovieShort[];
+
   useEffect(() => {
-    const storedMovies = JSON.parse(localStorage.getItem('ratedMovies') || '[]') as IMovieShort[];
-    setRatedMovies(storedMovies);
+    setRatedMovies(getLocalStoreItems());
   }, []);
 
   const addMovieToLocalStorage = (movie: IMovieShort) => {
-    const updatedMovies = [...ratedMovies, movie];
+    const updatedMovies = [...getLocalStoreItems(), movie];
     setRatedMovies(updatedMovies);
     localStorage.setItem('ratedMovies', JSON.stringify(updatedMovies));
+    updateMovies && updateMovies();
   };
 
   const deleteMovieFromLocalStorage = (movie: IMovieShort) => {
-    const updatedMovies = ratedMovies.filter((ratedMovie) => movie.id !== ratedMovie.id);
+    const updatedMovies = getLocalStoreItems().filter((storedMovie) => movie.id !== storedMovie.id);
     setRatedMovies(updatedMovies);
     localStorage.setItem('ratedMovies', JSON.stringify(updatedMovies));
     updateMovies && updateMovies();
