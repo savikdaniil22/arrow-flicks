@@ -3,7 +3,8 @@ import styles from './not-found.module.scss';
 
 export default function NotFound() {
   return (
-    <div>
+    <div className={styles.notFoundPage}>
+      <Image className={styles.notFoundLogo} src="/logo.svg" alt="logo" width={179} height={36} />
       <div className={styles.notFound}>
         <div className={styles.notFounddItem}>
           <Image src="/notfound.svg" alt="notFound" width={656} height={196} />

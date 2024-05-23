@@ -1,9 +1,19 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: rgba(245, 245, 246, 1);
+}
+
+.notFoundLogo {
+  margin: 24px;
+}
+
 .notFound {
-  height: 900px;
-  max-width: 1160px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .notFounddItem {
