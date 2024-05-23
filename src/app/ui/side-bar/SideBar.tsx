@@ -1,10 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './SideBar.module.scss';
 
 export default function SideBar() {
+  const pathname = usePathname();
   const router = useRouter();
 
   const handleRedirect = (path: string) => {
@@ -16,8 +17,18 @@ export default function SideBar() {
       <Image src="/logo.svg" alt="logo" width={179} height={36} />
       <nav className={styles.links}>
         <ul>
-          <li onClick={() => handleRedirect('/movies')}>Movies</li>
-          <li onClick={() => handleRedirect('/rated-movies')}>Rated movies</li>
+          <li
+            className={pathname === '/movies' ? styles.active : ''}
+            onClick={() => handleRedirect('/movies')}
+          >
+            Movies
+          </li>
+          <li
+            className={pathname === '/rated-movies' ? styles.active : ''}
+            onClick={() => handleRedirect('/rated-movies')}
+          >
+            Rated movies
+          </li>
         </ul>
       </nav>
     </div>
