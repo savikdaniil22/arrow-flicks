@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import styles from './layout.module.scss';
-import Head from 'next/head';
-import SideBar from './ui/side-bar/SideBar';
+import { MantineProvider } from '@mantine/core';
+import { theme } from '../../theme';
+import '@mantine/core/styles.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,14 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <title>ArrowFlicks</title>
         <meta name="description" content="ArrowFlicks" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <body className={`${inter.className} ${styles.container}`}>
-        <SideBar />
-        <div className={styles.content}>{children}</div>
+      </head>
+      <body className={inter.className}>
+        <MantineProvider theme={theme}>{children}</MantineProvider>
       </body>
     </html>
   );
