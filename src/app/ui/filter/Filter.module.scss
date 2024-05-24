@@ -1,0 +1,104 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  max-width: 980px;
+
+  &:last-of-type {
+    justify-content: end;
+    margin-bottom: 24px;
+  }
+}
+
+.numberContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.label {
+  margin-bottom: 8px;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.selectInput {
+  border-radius: 8px;
+  border: 1px solid #d5d6dc;
+  width: 284px;
+  height: 42px;
+  overflow: hidden;
+  &:hover {
+    border: 1px solid #9854f6;
+  }
+  &[data-expanded] {
+    border: 1px solid #9854f6;
+  }
+}
+
+.option {
+  &:hover {
+    background: #f2ebf9;
+  }
+
+  &[data-checked] {
+    background: #9854f6;
+    color: #ffffff;
+  }
+}
+
+.pill {
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  background: none;
+
+  &:not(:last-child):after {
+    content: ', ';
+  }
+
+  button {
+    display: none;
+  }
+}
+
+.pillsList {
+  display: flex;
+  overflow: hidden;
+}
+.numberInput {
+  border-radius: 8px;
+  border: 1px solid #d5d6dc;
+  width: 138px;
+  height: 42px;
+  &:hover {
+    border: 1px solid #9854f6;
+  }
+  &:focus {
+    border: 1px solid #9854f6;
+  }
+}
+
+.numberControl {
+  border: none;
+  color: #acadb9;
+}
+
+.button {
+  align-self: flex-end;
+  margin-bottom: 3px;
+  padding: 0;
+  color: #9854f6;
+  font-weight: 500;
+  &:hover {
+    color: #bd93f7;
+  }
+  &:active {
+    color: #541f9d;
+  }
+}
