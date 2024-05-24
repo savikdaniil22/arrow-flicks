@@ -4,7 +4,17 @@ export const getLocalStoreItems = () =>
   JSON.parse(localStorage.getItem('ratedMovies') || '[]') as IMovieShort[];
 
 export const addMovieToLocalStorage = (movie: IMovieShort) => {
-  const updatedMovies = [...getLocalStoreItems(), movie];
+  const isElementFound = getLocalStoreItems().some((data) => movie.id === data.id);
+  let updatedMovies;
+  if (isElementFound) {
+    updatedMovies = getLocalStoreItems().map((data) => {
+      if (data.id === movie.id) {
+        return movie;
+      }
+    });
+  } else {
+    updatedMovies = [...getLocalStoreItems(), movie];
+  }
   localStorage.setItem('ratedMovies', JSON.stringify(updatedMovies));
 };
 

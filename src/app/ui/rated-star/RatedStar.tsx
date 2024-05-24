@@ -7,9 +7,11 @@ import {
   deleteMovieFromLocalStorage,
   getLocalStoreItems,
 } from '@/helpers/localStorage';
+import RatingPopup from '../rating-popup/RatingPopup';
 
 const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
   const [ratedMovies, setRatedMovies] = useState<IMovieShort[]>([]);
+  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     setRatedMovies(getLocalStoreItems());
@@ -34,14 +36,17 @@ const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
   return (
     <>
       {isMovieRated(movie) ? (
-        <Image
-          className={styles.star}
-          src="/ratedstar.svg"
-          alt="ratedstar"
-          width={28}
-          height={28}
-          onClick={() => deleteMovie(movie)}
-        />
+        <div className={styles.container}>
+          <Image
+            className={styles.star}
+            src="/ratedstar.svg"
+            alt="ratedstar"
+            width={28}
+            height={28}
+            onClick={() => setOpened(true)}
+          />
+          <span className={styles.rating}>{movie.rating}</span>
+        </div>
       ) : (
         <Image
           className={styles.star}
@@ -49,9 +54,16 @@ const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
           alt="star"
           width={28}
           height={28}
-          onClick={() => addMovie(movie)}
+          onClick={() => setOpened(true)}
         />
       )}
+      <RatingPopup
+        opened={opened}
+        movie={movie}
+        modaleClose={() => setOpened(false)}
+        addMovie={(data) => addMovie(data)}
+        deleteMovie={(data) => deleteMovie(data)}
+      ></RatingPopup>
     </>
   );
 };
