@@ -45,8 +45,15 @@ export default function Movies() {
           <MovieCard key={movie.id} movie={movie} genres={genres} />
         ))}
       </div>
-
-      <Pagination value={activePage} onChange={setPage} total={movies?.total_pages || 1} />
+      <div className={styles.pagination}>
+        <Pagination
+          value={activePage}
+          onChange={setPage}
+          total={movies?.total_pages || 1}
+          siblings={1}
+          boundaries={0}
+        />
+      </div>
     </div>
   );
 }

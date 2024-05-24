@@ -11,5 +11,13 @@
 .movieList {
   display: flex;
   flex-wrap: wrap;
+  max-width: 980px;
   gap: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: end;
+  max-width: 980px;
+  margin-top: 24px;
 }

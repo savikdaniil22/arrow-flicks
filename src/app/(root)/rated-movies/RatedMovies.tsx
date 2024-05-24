@@ -106,7 +106,15 @@ export default function RatedMovies() {
           )}
         </div>
       </div>
-      <Pagination value={activePage} onChange={setPage} total={getTotalPages()} />
+      <div className={styles.pagination}>
+        <Pagination
+          value={activePage}
+          onChange={setPage}
+          total={getTotalPages()}
+          siblings={1}
+          boundaries={0}
+        />
+      </div>
     </div>
   );
 }
