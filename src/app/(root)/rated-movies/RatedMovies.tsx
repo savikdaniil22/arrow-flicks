@@ -68,7 +68,7 @@ export default function RatedMovies() {
       <div className={styles.noRatedPage}>
         <div className={styles.noRatedItem}>
           <Image src="/haventrated.svg" alt="noRatedPage" width={400} height={300} />
-          <p>You haven't rated any films yet</p>
+          <p>You haven&apos;t rated any films yet</p>
           <a href="/movies">Find movies</a>
         </div>
       </div>
