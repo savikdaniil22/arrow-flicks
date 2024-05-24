@@ -1,14 +1,12 @@
 import Image from 'next/image';
 import styles from './MovieCardBig.module.scss';
-import { IMovie, IMovieCardBigProps, IMovieShort } from '@/models/Movie';
+import { IMovie, IMovieShort } from '@/models/Movie';
 import RatedStar from '../rated-star/RatedStar';
+import { changeNumberToVoteCount } from '@/helpers/formater';
 
-function formatNumber(num: number): string {
-  return num >= 1000000
-    ? `${Math.round(num / 1000000)}M`
-    : num >= 1000
-      ? `${Math.round(num / 1000)}K`
-      : `${num}`;
+interface IMovieCardBigProps {
+  movie?: IMovie;
+  trailerKey?: string;
 }
 
 const MovieCardBig: React.FC<IMovieCardBigProps> = ({ movie, trailerKey }) => {
@@ -54,7 +52,7 @@ const MovieCardBig: React.FC<IMovieCardBigProps> = ({ movie, trailerKey }) => {
             <div className={styles.moviecardInfoRaiting}>
               <Image src="/ratingstar.svg" alt="ratingstar" width={28} height={28} />
               <h1>{movie?.vote_average.toFixed(1)}</h1>
-              <p>({movie?.vote_count && formatNumber(movie?.vote_count)})</p>
+              <p>({movie?.vote_count && changeNumberToVoteCount(movie?.vote_count)})</p>
             </div>
           </div>
           <div className={styles.moviecardAllInfo}>
@@ -71,11 +69,11 @@ const MovieCardBig: React.FC<IMovieCardBigProps> = ({ movie, trailerKey }) => {
             </div>
             <div className={styles.moviecardBudget}>
               <p>Budget</p>
-              <h1>${movie?.budget && formatNumber(movie?.budget)}</h1>
+              <h1>${movie?.budget && changeNumberToVoteCount(movie?.budget)}</h1>
             </div>
             <div className={styles.moviecardGross}>
               <p>Gross worldwide</p>
-              <h1>${movie?.revenue && formatNumber(movie?.revenue)}</h1>
+              <h1>${movie?.revenue && changeNumberToVoteCount(movie?.revenue)}</h1>
             </div>
             <div className={styles.moviecardGanres}>
               <p>Genres</p>

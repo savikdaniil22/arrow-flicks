@@ -10,6 +10,8 @@ export const addMovieToLocalStorage = (movie: IMovieShort) => {
     updatedMovies = getLocalStoreItems().map((data) => {
       if (data.id === movie.id) {
         return movie;
+      } else {
+        return data;
       }
     });
   } else {

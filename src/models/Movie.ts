@@ -1,3 +1,5 @@
+import { IProductionCompany } from './Company';
+
 export interface IMoviesSearch {
   language: string;
   with_genres: string | null;
@@ -28,40 +30,17 @@ export interface IMovieShort {
   genre_ids: number[];
 }
 
-export interface IProductionCompany {
-  id: number;
-  name: string;
-  logo_path: string;
-  origin_country: string;
-}
-
 export interface IMovie extends IMovieShort {
   runtime: number;
   budget: number;
   revenue: number;
-  genres: IGenre[];
+  genres: IMovieGenre[];
   overview: string;
   production_companies: IProductionCompany[];
   videos: string[];
 }
 
-export interface IGenre {
+export interface IMovieGenre {
   id: number;
   name: string;
-}
-
-export interface IMovieCardProps {
-  movie: IMovieShort;
-  genres: IGenre[];
-  updateMovies?: () => void;
-}
-
-export interface IMovieCardBigProps {
-  movie?: IMovie;
-  trailerKey?: string;
-}
-
-export interface IRatedStarProps {
-  movie: IMovieShort;
-  updateMovies?: () => void;
 }

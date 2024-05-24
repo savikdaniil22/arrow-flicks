@@ -1,6 +1,6 @@
 'use client';
 
-import { IGenre, IMovieShort } from '@/models/Movie';
+import { IMovieGenre, IMovieShort } from '@/models/Movie';
 import MovieCard from '../../ui/movie-card/MovieCard';
 import styles from './RatedMovies.module.scss';
 import { useEffect, useState } from 'react';
@@ -8,14 +8,15 @@ import Image from 'next/image';
 import { Pagination } from '@mantine/core';
 import { fetchGenres } from '@/helpers/apis';
 
+const itemsPerPage = 4;
+
 export default function RatedMovies() {
   const [movies, setMovies] = useState<IMovieShort[]>([]);
-  const [genres, setGenres] = useState<IGenre[]>([]);
+  const [genres, setGenres] = useState<IMovieGenre[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [activePage, setPage] = useState(1);
 
   const getVisibleMovies = () => {
-    const itemsPerPage = 4;
     const startIndex = (activePage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return movies.slice(startIndex, endIndex);
@@ -40,7 +41,7 @@ export default function RatedMovies() {
   };
 
   const getTotalPages = () => {
-    return movies.length <= 4 ? 0 : Math.ceil(movies.length / 4);
+    return movies.length <= itemsPerPage ? 0 : Math.ceil(movies.length / itemsPerPage);
   };
 
   useEffect(() => {

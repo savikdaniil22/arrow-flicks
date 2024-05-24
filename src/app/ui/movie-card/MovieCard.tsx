@@ -1,19 +1,14 @@
 import Image from 'next/image';
 import styles from './MovieCard.module.scss';
-import { IMovieCardProps } from '@/models/Movie';
 import Link from 'next/link';
 import RatedStar from '../rated-star/RatedStar';
+import { IMovieGenre, IMovieShort } from '@/models/Movie';
+import { changeNumberToVoteCount, roundToNearestTen } from '@/helpers/formater';
 
-function roundToNearestTen(num: number): number {
-  return Math.round(num * 10) / 10;
-}
-
-function formatNumber(num: number): string {
-  return num >= 100000
-    ? `${roundToNearestTen(num / 1000000)}M`
-    : num >= 1000
-      ? `${roundToNearestTen(num / 1000)}K`
-      : `${num}`;
+interface IMovieCardProps {
+  movie: IMovieShort;
+  genres: IMovieGenre[];
+  updateMovies?: () => void;
 }
 
 const MovieCard: React.FC<IMovieCardProps> = ({ movie, genres, updateMovies }) => {
@@ -47,7 +42,7 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie, genres, updateMovies }) =
           <div className={styles.moviecardInfoRaiting}>
             <Image src="/ratingstar.svg" alt="ratingstar" width={28} height={28} />
             <h1>{roundedVoteAvarage}</h1>
-            <p>({formatNumber(movie.vote_count)})</p>
+            <p>({changeNumberToVoteCount(movie.vote_count)})</p>
           </div>
         </div>
         <div className={styles.moviecardGanres}>

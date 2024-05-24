@@ -4,8 +4,8 @@ import { IMovie } from '@/models/Movie';
 import styles from './Movie.module.scss';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { fetchMovieById, fetchTrailerById } from '@/helpers/apis';
 import MovieCardBig from '@/app/ui/movie-card-big/MovieCardBig';
-import { fetchMovie, fetchTrailer } from '@/helpers/apis';
 
 export default function Movie() {
   const [trailerKey, setTrailerKey] = useState<string>();
@@ -13,9 +13,9 @@ export default function Movie() {
 
   const router = useParams();
   useEffect(() => {
-    fetchMovie(router!.id as string).then((data) => {
+    fetchMovieById(router!.id as string).then((data) => {
       setMovie(data);
-      fetchTrailer(data.id).then((data) => {
+      fetchTrailerById(data.id).then((data) => {
         setTrailerKey(data);
       });
     });

@@ -1,4 +1,4 @@
-import { IMovieShort, IRatedStarProps } from '@/models/Movie';
+import { IMovieShort } from '@/models/Movie';
 import styles from './RatedStar.module.scss';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -8,6 +8,11 @@ import {
   getLocalStoreItems,
 } from '@/helpers/localStorage';
 import RatingPopup from '../rating-popup/RatingPopup';
+
+interface IRatedStarProps {
+  movie: IMovieShort;
+  updateMovies?: () => void;
+}
 
 const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
   const [ratedMovies, setRatedMovies] = useState<IMovieShort[]>([]);

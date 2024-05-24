@@ -3,14 +3,14 @@
 import { useEffect, useState } from 'react';
 import MovieCard from '../../ui/movie-card/MovieCard';
 import styles from './Movies.module.scss';
-import { IGenre, IMoviesSearchResponse } from '@/models/Movie';
+import { IMovieGenre, IMoviesSearchResponse } from '@/models/Movie';
 import { Pagination } from '@mantine/core';
 import { fetchGenres, fetchMovies } from '@/helpers/apis';
 import Filter from '@/app/ui/filter/Filter';
 
 export default function Movies() {
   const [movies, setMovies] = useState<IMoviesSearchResponse>();
-  const [genres, setGenres] = useState<IGenre[]>([]);
+  const [genres, setGenres] = useState<IMovieGenre[]>([]);
   const [activePage, setPage] = useState(1);
   const [filter, setFilter] = useState({});
 
