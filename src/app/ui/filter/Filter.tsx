@@ -134,7 +134,7 @@ const Filter: React.FC<IFilterProps> = ({ genres, setFilter }) => {
             step={1}
           />
         </div>
-        <Group justify="flex-end" mt="md">
+        <div className={styles.resetButton}>
           <Button
             variant="transparent"
             className={styles.button}
@@ -142,7 +142,7 @@ const Filter: React.FC<IFilterProps> = ({ genres, setFilter }) => {
           >
             Reset filters
           </Button>
-        </Group>
+        </div>
       </div>
       <div className={styles.row}>
         <Select
