@@ -2,33 +2,33 @@ import { IMovieShort, IRatedStarProps } from '@/models/Movie';
 import styles from './RatedStar.module.scss';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import {
+  addMovieToLocalStorage,
+  deleteMovieFromLocalStorage,
+  getLocalStoreItems,
+} from '@/helpers/localStorage';
 
 const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
   const [ratedMovies, setRatedMovies] = useState<IMovieShort[]>([]);
-
-  const getLocalStoreItems = () =>
-    JSON.parse(localStorage.getItem('ratedMovies') || '[]') as IMovieShort[];
 
   useEffect(() => {
     setRatedMovies(getLocalStoreItems());
   }, []);
 
-  const addMovieToLocalStorage = (movie: IMovieShort) => {
-    const updatedMovies = [...getLocalStoreItems(), movie];
-    setRatedMovies(updatedMovies);
-    localStorage.setItem('ratedMovies', JSON.stringify(updatedMovies));
-    updateMovies && updateMovies();
-  };
-
-  const deleteMovieFromLocalStorage = (movie: IMovieShort) => {
-    const updatedMovies = getLocalStoreItems().filter((storedMovie) => movie.id !== storedMovie.id);
-    setRatedMovies(updatedMovies);
-    localStorage.setItem('ratedMovies', JSON.stringify(updatedMovies));
-    updateMovies && updateMovies();
-  };
-
   const isMovieRated = (movie: IMovieShort): boolean => {
     return ratedMovies.some((m) => m.id === movie.id);
+  };
+
+  const addMovie = (movie: IMovieShort) => {
+    addMovieToLocalStorage(movie);
+    setRatedMovies(getLocalStoreItems());
+    updateMovies && updateMovies();
+  };
+
+  const deleteMovie = (movie: IMovieShort) => {
+    deleteMovieFromLocalStorage(movie);
+    setRatedMovies(getLocalStoreItems());
+    updateMovies && updateMovies();
   };
 
   return (
@@ -40,7 +40,7 @@ const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
           alt="ratedstar"
           width={28}
           height={28}
-          onClick={() => deleteMovieFromLocalStorage(movie)}
+          onClick={() => deleteMovie(movie)}
         />
       ) : (
         <Image
@@ -49,7 +49,7 @@ const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
           alt="star"
           width={28}
           height={28}
-          onClick={() => addMovieToLocalStorage(movie)}
+          onClick={() => addMovie(movie)}
         />
       )}
     </>

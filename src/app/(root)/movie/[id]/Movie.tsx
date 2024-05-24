@@ -5,18 +5,7 @@ import styles from './Movie.module.scss';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import MovieCardBig from '@/app/ui/movie-card-big/MovieCardBig';
-
-const fetchMovie = async (id: string): Promise<IMovie> => {
-  const res = await fetch(`/api/tmdb?endpoint=movie/${id}&params={"language":"en-US"}`);
-  const data = await res.json();
-  return data;
-};
-
-const fetchTrailer = async (id: number): Promise<string> => {
-  const res = await fetch(`/api/tmdb?endpoint=movie/${id}/videos`);
-  const data = await res.json();
-  return data.results[0]?.key;
-};
+import { fetchMovie, fetchTrailer } from '@/helpers/apis';
 
 export default function Movie() {
   const [trailerKey, setTrailerKey] = useState<string>();

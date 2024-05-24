@@ -26,10 +26,13 @@
     cursor: pointer;
   }
 
-  li:hover,
   .active {
     background-color: rgba(229, 213, 250, 1);
     font-weight: 700;
     color: rgba(152, 84, 246, 1);
+  }
+
+  li:hover {
+    color: rgba(189, 147, 247, 1);
   }
 }

@@ -6,12 +6,7 @@ import styles from './RatedMovies.module.scss';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Pagination } from '@mantine/core';
-
-const fetchGenres = async (): Promise<IGenre[]> => {
-  const res = await fetch('/api/tmdb?endpoint=genre/movie/list&params={"language":"en-US"}');
-  const data = await res.json();
-  return data.genres;
-};
+import { fetchGenres } from '@/helpers/apis';
 
 export default function RatedMovies() {
   const [movies, setMovies] = useState<IMovieShort[]>([]);

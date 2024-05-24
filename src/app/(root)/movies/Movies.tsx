@@ -3,21 +3,9 @@
 import { useEffect, useState } from 'react';
 import MovieCard from '../../ui/movie-card/MovieCard';
 import styles from './Movies.module.scss';
-import { IGenre, IMovieShort, IMoviesSearchResponse } from '@/models/Movie';
+import { IGenre, IMoviesSearchResponse } from '@/models/Movie';
 import { Pagination } from '@mantine/core';
-
-const fetchMovies = async (activePage: number, sorting: string): Promise<IMoviesSearchResponse> => {
-  const res = await fetch(
-    `/api/tmdb?endpoint=discover/movie&params={"include_adult":false,"include_video":false,"language":"en-US","page":"${activePage}","sort_by":"${sorting}"}`,
-  );
-  return await res.json();
-};
-
-const fetchGenres = async (): Promise<IGenre[]> => {
-  const res = await fetch('/api/tmdb?endpoint=genre/movie/list&params={"language":"en-US"}');
-  const data = await res.json();
-  return data.genres;
-};
+import { fetchGenres, fetchMovies } from '@/helpers/apis';
 
 export default function Movies() {
   const [movies, setMovies] = useState<IMoviesSearchResponse>();
