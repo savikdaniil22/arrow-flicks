@@ -43,7 +43,10 @@ const RatingPopup: React.FC<IRatingProps> = ({
   return (
     <Modal
       opened={opened}
-      onClose={() => closeModal()}
+      onClose={() => {
+        setRating(0);
+        closeModal();
+      }}
       title="Your rating"
       centered
       closeButtonProps={{

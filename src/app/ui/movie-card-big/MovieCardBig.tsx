@@ -100,30 +100,36 @@ const MovieCardBig: React.FC<IMovieCardBigProps> = ({ movie, trailerKey }) => {
           <>
             <h1>Description</h1>
             <p>{movie?.overview}</p>
-            <span className={styles.line} />
+            {movie?.production_companies && movie?.production_companies.length > 0 && (
+              <span className={styles.line} />
+            )}
           </>
         )}
-        <h1>Production</h1>
-        <div className={styles.production}>
-          {movie?.production_companies.map(
-            (company: { id: number; name: string; logo_path: string }, index: number) => (
-              <div key={index} className={styles.productionCompany}>
-                <Image
-                  className={styles.productionCompanyImage}
-                  src={
-                    company.logo_path
-                      ? `https://image.tmdb.org/t/p/w500${company.logo_path}`
-                      : '/nocompanyimg.svg'
-                  }
-                  alt="production"
-                  width={40}
-                  height={40}
-                />
-                <h2>{company.name}</h2>
-              </div>
-            ),
-          )}
-        </div>
+        {movie?.production_companies && movie?.production_companies.length > 0 && (
+          <>
+            <h1>Production</h1>
+            <div className={styles.production}>
+              {movie?.production_companies.map(
+                (company: { id: number; name: string; logo_path: string }, index: number) => (
+                  <div key={index} className={styles.productionCompany}>
+                    <Image
+                      className={styles.productionCompanyImage}
+                      src={
+                        company.logo_path
+                          ? `https://image.tmdb.org/t/p/w500${company.logo_path}`
+                          : '/nocompanyimg.svg'
+                      }
+                      alt="production"
+                      width={40}
+                      height={40}
+                    />
+                    <h2>{company.name}</h2>
+                  </div>
+                ),
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

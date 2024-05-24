@@ -22,8 +22,8 @@ const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
     setRatedMovies(getLocalStoreItems());
   }, []);
 
-  const isMovieRated = (movie: IMovieShort): boolean => {
-    return ratedMovies.some((m) => m.id === movie.id);
+  const ratedMovie = (movie: IMovieShort): IMovieShort => {
+    return ratedMovies.filter((data) => data.id === movie.id)[0];
   };
 
   const addMovie = (movie: IMovieShort) => {
@@ -40,7 +40,7 @@ const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
 
   return (
     <>
-      {isMovieRated(movie) ? (
+      {ratedMovie(movie) ? (
         <div className={styles.container}>
           <Image
             className={styles.star}
@@ -50,7 +50,7 @@ const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
             height={28}
             onClick={() => setOpened(true)}
           />
-          <span className={styles.rating}>{movie.rating}</span>
+          <span className={styles.rating}>{ratedMovie(movie).rating}</span>
         </div>
       ) : (
         <Image

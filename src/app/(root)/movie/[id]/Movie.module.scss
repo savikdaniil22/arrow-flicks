@@ -22,3 +22,10 @@
 .router a:hover {
   cursor: pointer;
 }
+
+.loaderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
