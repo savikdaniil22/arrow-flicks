@@ -7,7 +7,7 @@ import { getLocalStoreItems } from '@/helpers/localStorage';
 interface IRatingProps {
   opened: boolean;
   movie: IMovieShort;
-  modaleClose: () => void;
+  closeModal: () => void;
   addMovie: (movie: IMovieShort) => void;
   deleteMovie: (movie: IMovieShort) => void;
 }
@@ -15,7 +15,7 @@ interface IRatingProps {
 const RatingPopup: React.FC<IRatingProps> = ({
   opened,
   movie,
-  modaleClose,
+  closeModal,
   addMovie,
   deleteMovie,
 }) => {
@@ -32,18 +32,18 @@ const RatingPopup: React.FC<IRatingProps> = ({
   const handleSave = () => {
     const movieWithRating = { ...movie, rating };
     addMovie(movieWithRating);
-    modaleClose();
+    closeModal();
   };
 
   const handleDelete = () => {
     deleteMovie(movie);
-    modaleClose();
+    closeModal();
   };
 
   return (
     <Modal
       opened={opened}
-      onClose={() => modaleClose()}
+      onClose={() => closeModal()}
       title="Your rating"
       centered
       closeButtonProps={{

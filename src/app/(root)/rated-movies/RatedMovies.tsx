@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Pagination } from '@mantine/core';
 import { fetchGenres } from '@/helpers/apis';
+import NotFoundList from '@/app/ui/not-found-list/NotFoundList';
 
 const itemsPerPage = 4;
 
@@ -15,6 +16,7 @@ export default function RatedMovies() {
   const [genres, setGenres] = useState<IMovieGenre[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [activePage, setPage] = useState(1);
+  const [storedMovies, setStoredMovies] = useState<IMovieShort[]>([]);
 
   const getVisibleMovies = () => {
     const startIndex = (activePage - 1) * itemsPerPage;
@@ -45,6 +47,12 @@ export default function RatedMovies() {
   };
 
   useEffect(() => {
+    const storedMovies = JSON.parse(localStorage.getItem('ratedMovies') || '[]') as IMovieShort[];
+    setStoredMovies(storedMovies);
+    setMovies(storedMovies);
+  }, []);
+
+  useEffect(() => {
     handleSearch();
   }, [activePage]);
 
@@ -55,7 +63,7 @@ export default function RatedMovies() {
     });
   }, []);
 
-  if (movies.length === 0) {
+  if (storedMovies.length === 0) {
     return (
       <div className={styles.noRatedPage}>
         <div className={styles.noRatedItem}>
@@ -98,7 +106,7 @@ export default function RatedMovies() {
               />
             ))
           ) : (
-            <p>No movies found :c</p>
+            <NotFoundList></NotFoundList>
           )}
         </div>
       </div>

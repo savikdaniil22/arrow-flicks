@@ -7,6 +7,7 @@ import { IMovieGenre, IMoviesSearchResponse } from '@/models/Movie';
 import { Pagination } from '@mantine/core';
 import { fetchGenres, fetchMovies } from '@/helpers/apis';
 import Filter from '@/app/ui/filter/Filter';
+import NotFoundList from '@/app/ui/not-found-list/NotFoundList';
 
 export default function Movies() {
   const [movies, setMovies] = useState<IMoviesSearchResponse>();
@@ -35,20 +36,29 @@ export default function Movies() {
           setFilter(values);
         }}
       ></Filter>
-
       <div className={styles.movieList}>
-        {movies?.results?.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} genres={genres} />
-        ))}
+        {movies?.results && movies.results.length > 0 ? (
+          <>
+            {movies.results.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} genres={genres} />
+            ))}
+          </>
+        ) : (
+          <NotFoundList></NotFoundList>
+        )}
       </div>
       <div className={styles.pagination}>
-        <Pagination
-          value={activePage}
-          onChange={setPage}
-          total={movies?.total_pages || 1}
-          siblings={1}
-          boundaries={0}
-        />
+        {movies?.results && movies.results.length > 0 ? (
+          <Pagination
+            value={activePage}
+            onChange={setPage}
+            total={movies?.total_pages || 1}
+            siblings={1}
+            boundaries={0}
+          />
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

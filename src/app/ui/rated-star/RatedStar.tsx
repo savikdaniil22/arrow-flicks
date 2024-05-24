@@ -65,7 +65,7 @@ const RatedStar: React.FC<IRatedStarProps> = ({ movie, updateMovies }) => {
       <RatingPopup
         opened={opened}
         movie={movie}
-        modaleClose={() => setOpened(false)}
+        closeModal={() => setOpened(false)}
         addMovie={(data) => addMovie(data)}
         deleteMovie={(data) => deleteMovie(data)}
       ></RatingPopup>
